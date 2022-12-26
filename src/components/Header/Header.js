@@ -1,21 +1,23 @@
 import React, { useContext } from "react";
-import firebaseContext from "../context/firebase";
-import AuthContext from "../context/authContext";
+import firebaseContext from "../../context/firebase";
+import AuthContext from "../../context/authContext";
 import { Link } from "react-router-dom";
-import logo from "../images/logo.png";
-import * as ROUTES from "../constants/routes";
+import logo from "../../images/logo.png";
+import * as ROUTES from "../../constants/routes";
+
+import itachi from "../../images/avatars/itachi.jpg";
 
 function Header() {
   const { firebase } = useContext(firebaseContext);
   const { user } = useContext(AuthContext);
 
-  console.log("user", user);
+  // console.log("user", user);
 
   return (
     <header className="flex justify-around py-3 bg-white text-grey-700 border-b border-grey-300">
       <img src={logo} alt="instagram logo" className="w-[100px]" />
       {user ? (
-        <nav className="flex items-center gap-3">
+        <nav className="flex items-center gap-2">
           <Link to={ROUTES.DASHBOARD}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -23,7 +25,7 @@ function Header() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-5 h-5"
+              className="w-6 h-6 text-grey-400"
             >
               <path
                 strokeLinecap="round"
@@ -51,7 +53,7 @@ function Header() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-5 h-5"
+                className="w-6 h-6 text-grey-400"
               >
                 <path
                   strokeLinecap="round"
@@ -62,7 +64,13 @@ function Header() {
             </Link>
           </button>
 
-          <button></button>
+          <Link to={`/p/${user.displayName}`}>
+            <img
+              src={itachi}
+              alt={`${user.displayname}`}
+              className="w-6 h-6 rounded-[50%]"
+            />
+          </Link>
         </nav>
       ) : (
         <nav className="flex items-center gap-3 text-sm font-semibold">
