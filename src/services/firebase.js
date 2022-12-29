@@ -16,6 +16,19 @@ const doesUserAlreadyExist = async function (username) {
   return resultData.length > 0 ? true : false;
 };
 
+export const getUserByUsername = async function (username) {
+  const result = await firebase
+    .firestore()
+    .collection("users")
+    .where("username", "==", username)
+    .get();
+
+  return result.docs.map((item) => ({
+    ...item.data(),
+    docId: item.id,
+  }));
+};
+
 export const getUserByUserId = async function (userId) {
   const result = await firebase
     .firestore()

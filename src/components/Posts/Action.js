@@ -3,7 +3,7 @@ import React, { useContext, useState } from "react";
 import firebaseContext from "../../context/firebase";
 import AuthContext from "../../context/authContext";
 
-function Action({ userlikedPhoto, docId, likes }) {
+function Action({ userlikedPhoto, docId, likes, commentInput }) {
   const { firebase, FieldValue } = useContext(firebaseContext);
 
   const { user } = useContext(AuthContext);
@@ -29,7 +29,7 @@ function Action({ userlikedPhoto, docId, likes }) {
 
   return (
     <div className="ml-3 py-3 flex flex-col items-start gap-2">
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
@@ -48,6 +48,7 @@ function Action({ userlikedPhoto, docId, likes }) {
           />
         </svg>
         <svg
+          onClick={() => commentInput.current.focus()}
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -63,7 +64,7 @@ function Action({ userlikedPhoto, docId, likes }) {
         </svg>
       </div>
       <div>
-        <p className="text-sm ml-2">
+        <p className="text-sm">
           {likes === 1 ? `${likes} like` : `${likes} likes`}
         </p>
       </div>

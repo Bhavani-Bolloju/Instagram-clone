@@ -17,7 +17,7 @@ function Header() {
     <header className="flex justify-around py-3 bg-white text-grey-700 border-b border-grey-300">
       <img src={logo} alt="instagram logo" className="w-[100px]" />
       {user ? (
-        <nav className="flex items-center gap-2">
+        <nav className="flex items-center gap-3">
           <Link to={ROUTES.DASHBOARD}>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -25,7 +25,7 @@ function Header() {
               viewBox="0 0 24 24"
               strokeWidth="1.5"
               stroke="currentColor"
-              className="w-6 h-6 text-grey-400"
+              className="w-6 h-6 text-grey-500"
             >
               <path
                 strokeLinecap="round"
@@ -53,7 +53,7 @@ function Header() {
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6 h-6 text-grey-400"
+                className="w-6 h-6 text-grey-500"
               >
                 <path
                   strokeLinecap="round"

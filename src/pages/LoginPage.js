@@ -8,7 +8,6 @@ import * as ROUTES from "../constants/routes";
 function LoginPage() {
   const { firebase } = useContext(firebaseContext);
   const history = useHistory();
-  // console.log(firebase);
 
   const [inputEmail, setInputEmail] = useState("");
   const [inputPassword, setInputPassword] = useState("");
