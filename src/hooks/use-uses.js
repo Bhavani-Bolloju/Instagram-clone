@@ -5,10 +5,6 @@ import AuthContext from "../context/authContext";
 const useUser = function () {
   const [userDetails, setUserDetails] = useState({});
   const { user } = useContext(AuthContext);
-
-  // console.log(useContext(AuthContext));
-
-  //we will have a fucntion we call that will return user details
   useEffect(() => {
     const getUserDetail = async function () {
       const [response] = await getUserByUserId(user?.uid);

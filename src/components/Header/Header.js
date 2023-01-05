@@ -11,8 +11,6 @@ function Header() {
   const { firebase } = useContext(firebaseContext);
   const { user } = useContext(AuthContext);
 
-  // console.log("user", user);
-
   return (
     <header className="flex justify-around py-3 bg-white text-grey-700 border-b border-grey-300">
       <img src={logo} alt="instagram logo" className="w-[100px]" />
@@ -64,10 +62,10 @@ function Header() {
             </Link>
           </button>
 
-          <Link to={`/p/${user.displayName}`}>
+          <Link to={`/p/itachi`}>
             <img
               src={itachi}
-              alt={`${user.displayname}`}
+              alt="itachi profile"
               className="w-6 h-6 rounded-[50%]"
             />
           </Link>

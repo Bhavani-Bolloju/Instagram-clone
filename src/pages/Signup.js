@@ -49,7 +49,7 @@ function Signup() {
 
         //auth also includes username of the new user
         await newUserAccont.user.updateProfile({
-          displayName: username,
+          displayName: "username",
         });
 
         //update the firestore collection with new user details
