@@ -6,8 +6,10 @@ import useUser from "../../hooks/use-uses";
 
 function Sidebar() {
   const {
-    userDetails: { docId, fullName, username, userId, following },
+    userDetails: { docId, fullName, username, userId, following, followers },
   } = useUser();
+
+  // console.log([docId, fullName, username, userId, following, followers]);
 
   return (
     <div className="p-4">

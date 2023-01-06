@@ -30,9 +30,8 @@ function Profile() {
   return (
     <div>
       <Header />
-      <div className="mx-auto max-w-screen-lg ">
-        {userExists && <UserProfile user={user} />}
-      </div>
+
+      {userExists && <UserProfile user={user} />}
     </div>
   );
 }

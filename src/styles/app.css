@@ -538,6 +538,12 @@ video {
 .mt-10 {
   margin-top: 2.5rem;
 }
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
+}
 .block {
   display: block;
 }
@@ -582,6 +588,9 @@ video {
 }
 .h-\[130px\] {
   height: 130px;
+}
+.h-\[350px\] {
+  height: 350px;
 }
 .w-\[60\%\] {
   width: 60%;
@@ -633,6 +642,12 @@ video {
 }
 .w-\[50\%\] {
   width: 50%;
+}
+.w-\[80\%\] {
+  width: 80%;
+}
+.w-\[90\%\] {
+  width: 90%;
 }
 .max-w-screen-lg {
   max-width: 1024px;
@@ -718,6 +733,20 @@ video {
 .gap-\[20\%\] {
   gap: 20%;
 }
+.gap-14 {
+  gap: 3.5rem;
+}
+.gap-16 {
+  gap: 4rem;
+}
+.gap-y-10 {
+  row-gap: 2.5rem;
+}
+.space-x-1 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-right: calc(0.25rem * var(--tw-space-x-reverse));
+  margin-left: calc(0.25rem * calc(1 - var(--tw-space-x-reverse)));
+}
 .self-center {
   align-self: center;
 }
@@ -751,6 +780,12 @@ video {
 .border-b {
   border-bottom-width: 1px;
 }
+.border-t-2 {
+  border-top-width: 2px;
+}
+.border-t {
+  border-top-width: 1px;
+}
 .border-grey-200 {
   --tw-border-opacity: 1;
   border-color: rgb(229 231 235 / var(--tw-border-opacity));
@@ -762,6 +797,18 @@ video {
 .border-grey-300 {
   --tw-border-opacity: 1;
   border-color: rgb(209 213 219 / var(--tw-border-opacity));
+}
+.border-grey-500 {
+  --tw-border-opacity: 1;
+  border-color: rgb(107 114 128 / var(--tw-border-opacity));
+}
+.border-t-grey-400 {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(156 163 175 / var(--tw-border-opacity));
+}
+.border-t-grey-300 {
+  --tw-border-opacity: 1;
+  border-top-color: rgb(209 213 219 / var(--tw-border-opacity));
 }
 .bg-white {
   background-color: #ffff;
@@ -784,6 +831,10 @@ video {
 .bg-blue-500 {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
+}
+.bg-blue-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 78 216 / var(--tw-bg-opacity));
 }
 .fill-red {
   fill: #ef4444;
@@ -839,6 +890,18 @@ video {
   padding-top: 0px;
   padding-bottom: 0px;
 }
+.py-10 {
+  padding-top: 2.5rem;
+  padding-bottom: 2.5rem;
+}
+.py-20 {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+.py-\[3px\] {
+  padding-top: 3px;
+  padding-bottom: 3px;
+}
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -866,6 +929,14 @@ video {
 .text-2xl {
   font-size: 1.5rem;
   line-height: 2rem;
+}
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.text-lg {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
 }
 .font-medium {
   font-weight: 500;
@@ -912,6 +983,10 @@ video {
 
 body {
   background-color: #fafafa;
+}
+
+.first-letter\:items-start::first-letter {
+  align-items: flex-start;
 }
 
 .placeholder\:text-\[13px\]::placeholder {

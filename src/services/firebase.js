@@ -57,45 +57,6 @@ export const getSuggestedProfiles = async function (userId, following) {
   return resultData;
 };
 
-//update Logged In User Followed Array
-
-export const updateLoggedInUserFollowedArray = async function (
-  docId,
-  spUserId,
-  isFollowing
-) {
-  // console.log(docId, spUserId);
-
-  return await firebase
-    .firestore()
-    .collection("users")
-    .doc(docId)
-    .update({
-      following: isFollowing
-        ? FieldValue.arrayRemove(spUserId)
-        : FieldValue.arrayUnion(spUserId),
-    });
-};
-
-//update Followed user Followers Array
-
-export const updateFolloweduserFollowersArray = async function (
-  spDocId,
-  userId,
-  isFollowing
-) {
-  return await firebase
-    .firestore()
-    .collection("users")
-    .doc(spDocId)
-    .update({
-      followers: isFollowing
-        ? FieldValue.arrayRemove(userId)
-        : FieldValue.arrayUnion(userId),
-    });
-  // console.log(result.data());
-};
-
 export const getPhotos = async function (userId, following) {
   const result = await firebase
     .firestore()
@@ -161,4 +122,53 @@ export const isUserFollowingProfileUser = async function (
 
   return isFollowing;
   // console.log(isFollowing);
+};
+
+//update loggedin user [following] array with the suggested profile userId upon follow btn click
+
+export const updateLoggedInUserFollowingArray = async function (
+  docId, //the logged in user doc Id
+  spUserId, //user thats been followed
+  isFollowing // boolean value
+) {
+  return await firebase
+    .firestore()
+    .collection("users")
+    .doc(docId)
+    .update({
+      following: isFollowing
+        ? FieldValue.arrayRemove(spUserId)
+        : FieldValue.arrayUnion(spUserId),
+    });
+
+  //userId been added to the loggedIN user following array since he is following a new user that been suggested to him
+};
+
+//update the followers array of the profileuser as well to add the loggedIn user UserId since hes been followed by logged in user
+export const updateLoggeduserFollowersArray = async function (
+  spDocId, //the user thats been followed doc ID
+  userId, //logged in user userId to add to user followers array
+  isFollowing //boolean value
+) {
+  return await firebase
+    .firestore()
+    .collection("users")
+    .doc(spDocId)
+    .update({
+      followers: isFollowing
+        ? FieldValue.arrayRemove(userId)
+        : FieldValue.arrayUnion(userId),
+    });
+};
+
+export const toggleFollow = async function (
+  isFollowing,
+  userId,
+  profileUserId,
+  userDocId,
+  profileUserDocId
+) {
+  await updateLoggedInUserFollowingArray(userDocId, profileUserId, isFollowing);
+
+  await updateLoggeduserFollowersArray(profileUserDocId, userId, isFollowing);
 };

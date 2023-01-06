@@ -4,8 +4,10 @@ import UserHeader from "./UserHeader";
 import UserPhotos from "./UserPhotos";
 
 function UserProfile({ user }) {
-  const { userId, username, following, followers, fullName } = user;
+  const { userId, username, following, followers, fullName, docId } = user;
   const [photos, setPhotos] = useState(null);
+
+  // console.log(docId);
 
   useEffect(() => {
     const userPhotos = async function () {
@@ -18,7 +20,7 @@ function UserProfile({ user }) {
   // console.log(followers);
 
   return (
-    <div>
+    <div className="mx-auto max-w-screen-lg flex flex-col gap-14 py-10">
       <UserHeader
         totalPosts={photos?.length > 0 ? photos.length : 0}
         profileUsername={username}
@@ -26,8 +28,9 @@ function UserProfile({ user }) {
         profileUserId={userId}
         followers={followers.length > 0 ? followers.length : 0}
         following={following.length > 0 ? following.length : 0}
+        profileDocId={docId}
       />
-      <UserPhotos userPhotos={photos} />
+      {photos && <UserPhotos userPhotos={photos} />}
     </div>
   );
 }

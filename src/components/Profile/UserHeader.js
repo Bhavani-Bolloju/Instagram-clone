@@ -1,18 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Skeleton from "react-loading-skeleton";
 import useUser from "../../hooks/use-uses";
-import { isUserFollowingProfileUser } from "../../services/firebase";
+import {
+  isUserFollowingProfileUser,
+  toggleFollow,
+} from "../../services/firebase";
 
 function UserHeader({
   profileUsername,
   profileFullname,
+  profileDocId,
+  profileUserId,
   followers,
   following,
-  profileUserId,
   totalPosts,
 }) {
   const {
-    userDetails: { username: loggedInUsername },
+    userDetails: {
+      username: loggedInUsername,
+      docId: loggedUserDocID,
+      userId: loggeduserId,
+    },
   } = useUser();
 
   const loggedInUserProfile = profileUsername === loggedInUsername;
@@ -36,26 +44,35 @@ function UserHeader({
     }
   }, [loggedInUsername, profileUserId]);
 
-  const followProfileUserHandler = function () {
+  //follow toggle button
+  const followProfileUserHandler = async function () {
     setTotalFollowers((count) => (isFollowing ? count - 1 : count + 1));
     setIsFollowing((prev) => !prev);
+
+    await toggleFollow(
+      isFollowing,
+      loggeduserId,
+      profileUserId,
+      loggedUserDocID,
+      profileDocId
+    );
   };
 
   return (
-    <div className="flex gap-[20%] mx-auto w-[50%] mt-10 items-start">
+    <div className="flex gap-[20%] mx-auto w-[50%]  items-start">
       <img
         className="w-[130px] h-[130px] rounded-full "
         src={require(`../../images/avatars/${profileUsername}.jpg`)}
         alt={profileUsername}
       />
 
-      <div className="flex-grow text-sm flex flex-col gap-3">
-        <div className="flex gap-20">
-          <p>{profileUsername}</p>
+      <div className="flex-grow text-sm flex gap-3 flex-col self-center">
+        <div className="flex gap-10 items-center">
+          <p className="text-lg">{profileUsername}</p>
           {!loggedInUserProfile && (
             <button
               onClick={followProfileUserHandler}
-              className="bg-blue-500 text-white px-2 font-bold  text-xs"
+              className="bg-blue-700 text-white px-2 py-[3px] font-bold  text-xs"
             >
               {isFollowing ? "unfollow" : "follow"}
             </button>
@@ -73,7 +90,7 @@ function UserHeader({
             <span className="font-bold"> {following}</span> following
           </div>
         </div>
-        <p>{profileFullname}</p>
+        <p className="font-medium">{profileFullname}</p>
       </div>
     </div>
   );
