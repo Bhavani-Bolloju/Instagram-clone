@@ -31,5 +31,8 @@ module.exports = {
       red: "#ef4444",
     },
   },
+  variants: {
+    display: ["group-hover"],
+  },
   plugins: [],
 };
